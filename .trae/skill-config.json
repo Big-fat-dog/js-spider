@@ -1,0 +1,8 @@
+{
+  "disabledSkills": [
+    "find-crypto-entry",
+    "skill-creator",
+    "env-patch",
+    "ast-deobfuscate"
+  ]
+}
