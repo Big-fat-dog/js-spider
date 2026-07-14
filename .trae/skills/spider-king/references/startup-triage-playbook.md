@@ -11,6 +11,7 @@ Complete these three checks first:
 1. environment and tool sanity
    - run `scripts/check_reverse_env.py` when local execution is available
    - confirm whether both `chrome-devtools` and `js-reverse` are usable
+   - note whether a local embedded runtime such as `iv8` is available when host-bound bootstrap is suspected
    - report blockers early instead of pretending the missing tool does not matter
 2. family triage
    - choose the first family that explains the failure mode best
@@ -19,7 +20,18 @@ Complete these three checks first:
    - state the smallest acceptable final shape
    - reject browser-backed replay, profile-bound state, and automation-driven submission up front
 
+## Escalation ladder before full browser dependence
+
+Use the smallest faithful layer that explains the evidence:
+
+1. simple decode or standard algorithm: handwrite in Python first
+2. host-bound JavaScript without true interaction: route to `references/embedded-browser-runtime-playbook.md`
+3. full interaction or rendering dependence: observe in browser, but keep the delivery gate strict and do not confuse observation with the final collector
+
 ## Family triage
+
+Choose one primary family for the application contract.
+Add the secondary tag `transport-gated` when TLS, ALPN, UA, HTTP version, or route-local admission blocks the clean baseline before application semantics are visible.
 
 ### `signer-gated`
 
@@ -34,12 +46,36 @@ First move:
 - capture one good request
 - trace the initiator
 - locate the canonical mutation point
+- if the field collapses to a standard digest, compact JSON, or obvious packet format, handwrite it in Python before touching any runtime
+- if the code reads host objects, lifecycle state, timers, or XHR wrappers, route to `references/embedded-browser-runtime-playbook.md`
 
 Primary references:
 
 - `references/transport-wrapper-playbook.md`
 - `references/patched-helper-playbook.md`
 - `references/crypto-patterns.md`
+- `references/embedded-browser-runtime-playbook.md` when host semantics matter
+
+### `transport-gated` (secondary tag)
+
+Symptoms:
+
+- standard HTTP clients fail at H2 reset, TLS EOF, handshake timeout, or early disconnect before meaningful application data appears
+- the same route behaves differently across UA families, HTTP versions, or client stacks
+- impersonated transport or mobile or app UA passes while default desktop or stdlib traffic fails
+- a sibling auth, identity, or business route bypasses a challenged landing route
+
+First move:
+
+- freeze a small admission matrix across route, client stack, UA family, and HTTP version
+- find one narrow profile that admits the baseline cleanly
+- test route-local bypasses before loading giant bundles
+- continue normal family triage only after application semantics become visible
+
+Primary references:
+
+- `references/transport-pre-gate-playbook.md`
+- `references/env-diff-playbook.md`
 
 ### `verifier-gated`
 
@@ -54,12 +90,16 @@ First move:
 - capture a clean untouched baseline before invasive instrumentation
 - diff requests and verifier outputs first
 - only then add the narrowest hook that proves the boundary
+- if challenge HTML plus scripts appear to seed the cookie, URL suffix, or verifier token, route to `references/embedded-browser-runtime-playbook.md`
+- if a bootstrap runtime exposes a getter after init or self-issues the decisive request, route to `references/challenge-artifact-harvest-playbook.md`
 
 Primary references:
 
 - `references/verifier-replay-playbook.md`
 - `references/troubleshooting-playbook.md`
 - `references/cookie-provenance-playbook.md` when cookies mutate during the verifier
+- `references/embedded-browser-runtime-playbook.md` when offline bootstrap may recover the verifier state
+- `references/challenge-artifact-harvest-playbook.md` when the verifier answer can be harvested locally from a runtime boundary
 
 ### `decode-gated`
 

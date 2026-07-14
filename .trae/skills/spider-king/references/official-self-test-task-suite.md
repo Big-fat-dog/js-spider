@@ -253,6 +253,25 @@ Must conclude:
 - raw payload must be frozen first
 - decoder chain must be rebuilt locally in order
 
+## Task 12A: Exact body bytes matter more than semantic field equivalence
+
+Prompt:
+
+```text
+Sending the form as a Python dict or JSON keeps failing, but replaying the exact frontend-style application/x-www-form-urlencoded byte string works. Recover the collector shape.
+```
+
+Expected route:
+
+- `references/transport-wrapper-playbook.md`
+- `references/troubleshooting-playbook.md`
+
+Must conclude:
+
+- exact body serialization can be part of the protocol contract
+- preserve field order, encoding, and frontend-style urlencoding when the route is legacy or wrapper-sensitive
+- do not assume that semantically equivalent key-value pairs are replay-equivalent on the wire
+
 ## Task 13: Environment mismatch
 
 Prompt:
@@ -270,6 +289,63 @@ Must conclude:
 
 - mismatch is evidence
 - choose the smallest local patch surface
+
+## Task 13A: Instance hook is bypassed
+
+Prompt:
+
+```text
+I patched one XMLHttpRequest instance in the local runtime, but the SDK still rewrites headers through a wrapper and bypasses my hook. Recover the collector shape.
+```
+
+Expected route:
+
+- `references/hook-techniques.md`
+- `references/environment-patch-playbook.md`
+
+Must conclude:
+
+- patch the highest stable boundary every call must cross
+- prototype, constructor-wrapper, ingress, or egress hooks beat one-off instance monkey-patching
+
+## Task 13B: Async bootstrap can collapse into injected state
+
+Prompt:
+
+```text
+The page fetches a token cookie asynchronously during bootstrap, but the signer later only reads document.cookie and local storage. My host bridge is synchronous. Recover the delivery shape.
+```
+
+Expected route:
+
+- `references/embedded-browser-runtime-playbook.md`
+- `references/cookie-provenance-playbook.md`
+
+Must conclude:
+
+- separate issuance from consumption
+- inject verified server-issued state when that removes unnecessary async bootstrap from the hot path
+- only reverse automated refresh when repeated replay proves the injected state expires or must be reissued online
+
+## Task 13C: Injected state does not close a native-surface gap
+
+Prompt:
+
+```text
+The local helper still emits a much shorter verifier blob than the browser. Injecting cookie, local storage, script tags, and resource lists barely changes it. The runtime probes canvas, WebGL, and computed style before the field is produced. Recover the delivery shape.
+```
+
+Expected route:
+
+- `references/environment-patch-playbook.md`
+- `references/embedded-browser-runtime-playbook.md`
+
+Must conclude:
+
+- compare structural metrics before semantic debugging
+- distinguish an injected-state gap from a native-surface gap
+- patch narrow local adapters or stubs for `canvas`, WebGL, layout, style, or descriptor surfaces before escalating to broader emulation
+- final delivery stays Python plus a tiny local helper, not browser-backed replay
 
 ## Task 14: Delivery-gate rejection
 
@@ -307,6 +383,129 @@ Must conclude:
 - bootstrap output is part of the protocol contract
 - category and pagination fields must be made explicit instead of trusting UI defaults
 - list and detail permissions may differ and must be documented separately
+
+## Task 15A: Challenge-generated cookie and packet family
+
+Prompt:
+
+```text
+The entry HTML loads challenge JS that must run locally before anything works. After that, a derived cookie and storage state appear. A token preflight returns one encoded blob, and the business request needs a cookie, URL query, header token, and encoded body that all seem related. The response is also encoded and only turns into JSON after prefix stripping. Build the collector shape.
+```
+
+Expected route:
+
+- `references/challenge-state-envelope-playbook.md`
+- `references/cookie-provenance-playbook.md`
+- `references/public-bootstrap-envelope-playbook.md`
+
+Must conclude:
+
+- challenge output is protocol state, not decoration
+- packet framing and inner crypto must be separated
+- URL query, body, response, and cookie may belong to one shared envelope family with field-specific variants
+- final delivery must model `entry -> local challenge/bootstrap -> token preflight -> business request -> local response decode`
+
+## Task 15B: Pagination route pivot and raw pager source
+
+Prompt:
+
+```text
+Pages 1 to 5 replay from /list-1.html to /list-5.html, but page 6 fails. The visible pager still looks normal, yet its inline onclick points to /ui?page=6 and the DOM getter turns &currentPage into garbage. Recover the collector shape.
+```
+
+Expected route:
+
+- `references/pagination-route-pivot-playbook.md`
+- `references/page-specific-exception-playbook.md` when the pivot might be narrow
+
+Must conclude:
+
+- pagination is part of the protocol contract, not filename arithmetic
+- the collector should follow the live next-page target instead of extrapolating the first-page URL family
+- raw pager source may be safer than a DOM-decoded attribute when markup repair mutates the route
+- final delivery stays browser-free
+
+## Task 15C: Public shell, empty hydration, split signer scopes
+
+Prompt:
+
+```text
+The page opens anonymously and renders a loading shell, but the HTML data blob is empty. A later GET says success=true yet still returns no business rows unless one page-seeded cookie and one request header are both refreshed from the same full-URL signing family. Reusing logged-in cookies makes the behavior less stable. Build the collector shape.
+```
+
+Expected route:
+
+- `references/public-bootstrap-envelope-playbook.md`
+- `references/cookie-provenance-playbook.md`
+- `references/transport-wrapper-playbook.md`
+
+Must conclude:
+
+- rendered shell does not prove the business payload lives in the HTML
+- boolean success flags do not prove protocol acceptance when payload and subcodes disagree
+- page-scoped bootstrap state and request-scoped signer state must be modeled separately
+- exact GET sign-input serialization can matter: query order, empty fields, and URL encoding
+- a fresh anonymous baseline should be established before reusing account state
+
+## Task 15D: Bootstrap config, wrapper framing, and perception surface
+
+Prompt:
+
+```text
+A public verifier begins with a prehandle call that returns JSONP containing a session id, work factor, asset URLs, answer bounds, and expiry. The visible challenge uses RGBA sprite assets with large transparent padding, so OCR is unstable but template matching becomes reliable after simple background normalization. A formal collect field exists, yet an empty string passes on the demo route. Recover the collector shape.
+```
+
+Expected route:
+
+- `references/verifier-replay-playbook.md`
+- `references/public-bootstrap-envelope-playbook.md`
+- `references/transport-wrapper-playbook.md`
+
+Must conclude:
+
+- bootstrap output is protocol state, not something to locally invent
+- JSONP or callback framing is part of the contract and must be normalized explicitly
+- the target should be split into protocol, compute, perception, and behavior surfaces
+- image preprocessing and visual QA can dominate verifier success when the answer is image-derived
+- a tolerated empty or simplified field on one public route is evidence, not proof the field is globally irrelevant
+
+## Task 15E: Server-looking field is locally minted filler
+
+Prompt:
+
+```text
+The request includes __RequestVerificationToken and pageId, but page code appends both locally and any fresh format-conforming values replay successfully under one valid session. Recover the collector shape.
+```
+
+Expected route:
+
+- `references/public-bootstrap-envelope-playbook.md`
+- `references/cookie-provenance-playbook.md`
+
+Must conclude:
+
+- server-looking names do not prove server issuance
+- prove writer, tolerance, and blocking value before modeling the field as a hard dependency
+- locally minted fillers should be generated cheaply in the collector instead of over-reversed
+
+## Task 15F: Human detail page is only a shell for a sibling API
+
+Prompt:
+
+```text
+Search results link to /detail/index.html?id=..., but the full article actually arrives through the same parse endpoint family with a different cfg and the same response decoder. Recover the collector shape.
+```
+
+Expected route:
+
+- `references/decoy-and-real-request-playbook.md`
+- `references/public-bootstrap-envelope-playbook.md`
+
+Must conclude:
+
+- the human-facing detail page can still be only a shell
+- once one route in the packet family is solved, sibling list/detail methods should be checked for wrapper and decoder reuse
+- a staged collector that persists ids for later detail backfill is preferred over rerunning the whole list crawl
 
 ## Task 16: Stateful encrypted stream
 
@@ -348,6 +547,25 @@ Must conclude:
 
 - prove who writes the cookie before hardcoding anything
 - recover the refresh path locally
+
+## Task 17A: Fresh session bootstrap still lacks business admission
+
+Prompt:
+
+```text
+I can call a public current-user bootstrap and receive a fresh session cookie from scratch, but the real business method still returns permission denied. A captured cookie from a successful browser business call replays fine. Recover the right protocol path.
+```
+
+Expected route:
+
+- `references/cookie-provenance-playbook.md`
+- `references/session-contract-playbook.md`
+
+Must conclude:
+
+- separate session minting from business admission
+- captured success can prove the request framing and decode chain even when the full session bootstrap path is still incomplete
+- do not keep blaming signer logic when the failure mode is route-specific permission state
 
 ## Task 18: Hooks make the site fail
 

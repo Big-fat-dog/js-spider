@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embed Iframe</title>
+    <style>
+        iframe {
+            border: none;
+        }
+        body {
+            background: linear-gradient(180deg, #fff, #e3e3e3 100%);
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #222;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            text-align: center;
+            box-sizing: border-box;
+            padding: 40px;
+            display: inline-block;
+        }
+        .text-overflow{
+            word-break: break-all;
+            word-wrap: break-word;
+            white-space: normal;
+        }
+        .url {
+            font-size: 2.5rem;
+            margin-bottom: 77px;
+            letter-spacing: 1px;
+            overflow: hidden;
+            padding:16px 30px;
+        }
+        .tip {
+            margin-bottom: 50px;
+            color: #262626;
+            font-size: 1.1rem;
+        }
+        .footer-tip {
+            color: #777777;
+            font-size: 1rem;
+            margin-top: 20px;
+        }
+
+        .decorated-box {
+            position: relative;
+        }
+
+        .decorated-box .corner {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+        }
+
+        .decorated-box .top-left {
+            bottom: -10px;
+            right: -10px;
+        }
+
+        .decorated-box .top-right {
+            bottom: -10px;
+            left:-10px;
+        }
+
+        .decorated-box .bottom-left {
+            top: -10px;
+            right: -10px;
+        }
+
+        .decorated-box .bottom-right {
+            top: -10px;
+            left: -10px;
+        }
+
+        /* 移动端样式 */
+        @media (max-width: 600px) {
+            .container{
+                width:90%;
+                padding: 0;
+                margin: 0 auto;
+            }
+            /*.url,*/
+            /*.tip,*/
+            /*.footer-tip{*/
+            /*    text-align: left;*/
+            /*}*/
+        }
+    </style>
+</head>
+<body>
+  <script>(function (){
+    window._jsc_ch_conf={"mt":"plab987","chHash":"17ffdfed4f6d168e8fe94c43c884120f","ev":"1","jv":"0.0.1","chType":0,"chTs":1784002718.5,"chID":"ed9b6c3b4e178400271817cc6726","cv":"www.dhl.com","jsc_wid":"39a33b2339bb113f7472a4f38d1bceff"};
+    var cspu = document.createElement('script');
+    cspu.src = '/_jsc_sbu/ws_sec_page.js?sc=9587&ev=1&jv=0.0.1&chType=0&chTs=1784002718.5&chID=ed9b6c3b4e178400271817cc6726&chHash=17ffdfed4f6d168e8fe94c43c884120f';
+    window._jsc_ch_conf.mo = location.hash === '' && location.href.indexOf('#') !== -1 ? '#' : location.hash;
+    window._jsc_ch_conf.search = location.search === '' && location.href.slice(0, location.href.length - window._jsc_ch_conf.mo.length).indexOf('?') !== -1 ? '' : location.search;
+    if (window.history && window.history.replaceState) {
+        var link = location.pathname + window._jsc_ch_conf.search;
+        var host = window.location.host;
+        var referrer = document.referrer;
+        var newUrl;
+        if (referrer && referrer.length > 1 && referrer.indexOf(host) === -1) {
+            referrer = referrer.replace(/[&\\?]ws_referrer_origin=([^&]+&?)/g, '')
+            if(link.indexOf("ws_referrer_origin") === -1) {
+                if(link.indexOf("?") == 0) {
+                    newUrl = link + "&ws_referrer_origin=" + encodeURIComponent(referrer)
+                }else {
+                    newUrl = link + "?ws_referrer_origin=" + encodeURIComponent(referrer)
+                }
+            }else {
+                newUrl = link.replace(/ws_referrer_origin=([^&]+&?)/g, function (match, a, b) {
+                    return 'ws_referrer_origin=' + encodeURIComponent(referrer)
+                })
+                // link = link.replace(/[&\\?]ws_referrer_origin=([^&]+&?)/g, '')
+            }
+            var url = window.location.protocol + "//" + location.host + newUrl + window._jsc_ch_conf.mo;
+            history.replaceState(null, null, url);
+            // cspu.onload = function() {history.replaceState(null, null, link+ window._jsc_ch_conf.mo)};
+        }
+    }
+    document.getElementsByTagName('head')[0].appendChild(cspu);
+        })()</script>
+<div class="container">
+    <div class="url text-overflow decorated-box">
+        <span id="h1-ctx"></span>
+        <svg class="corner top-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <line x1="-2" y1="10" x2="12" y2="10" stroke="#2D74FF" stroke-width="2" />
+            <line x1="10" y1="10" x2="10" y2="0" stroke="#2D74FF" stroke-width="2" />
+        </svg>
+        <svg class="corner top-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <line x1="10" y1="0" x2="10" y2="10" stroke="#000000" stroke-width="2" />
+            <line x1="8" y1="10" x2="22" y2="10" stroke="#000000" stroke-width="2" />
+        </svg>
+        <svg class="corner bottom-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <line x1="-2" y1="10" x2="12" y2="10" stroke="#000000" stroke-width="2" />
+            <line x1="10" y1="10" x2="10" y2="20" stroke="#000000" stroke-width="2" />
+        </svg>
+        <svg class="corner bottom-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <line x1="10" y1="20" x2="10" y2="10" stroke="#2D74FF" stroke-width="2" />
+            <line x1="8" y1="10" x2="22" y2="10" stroke="#2D74FF" stroke-width="2" />
+        </svg>
+    </div>
+    <div class="tip text-overflow" id="h2-ctx">
+        Before accessing the website, it is necessary to verify the security of the connection and browser environment.
+    </div>
+    <div id="wss-captcha"></div>
+    <div class="footer-tip text-overflow" id="description">
+        Verifying browser environment, this process may take a few seconds, please wait...
+    </div>
+</div>
+
+</body>
+</html>
+

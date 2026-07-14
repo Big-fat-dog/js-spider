@@ -1,0 +1,24 @@
+=== Akamai Challenge JS Analysis ===
+
+Found 1 occurrences of 'POST' (POST requests)
+  Context 1: VUbywOq5GLFpu6$CBJi23NlrTHA9Mk0om','otherDriver','POST','charCodeAt','Chrome','parse','filename','call',
+
+Found 3 occurrences of 'XMLHttpRequest' (XHR calls)
+  Context 1: URL:\x20','clearTimeout','tof','outerHeight','origXMLHttpRequest','forEach','success','remove','description','fail
+  Context 2: on(){ad(at,au,av+0x1);},0x7d0*(av+0x1)));},ay=new XMLHttpRequest();if(ay){ay[bg(-0x56,-0x48,-0x4f,0x2b,0x2d)](bg(-
+  Context 3:  aC=bD(-0xdc,-0x7c,-0xc8,-0x105,-0x63)+W(),aD=new XMLHttpRequest();if(!aD)return;if(bD(-0xe7,-0xfd,-0x1e,0x2e,-0x5
+
+Found 37 occurrences of 'navigator' (Navigator checks)
+
+Found 1 occurrences of 'screen' (Screen checks)
+  Context 1: vigator,'n',bO(0x27b,0x1d6,0x1ea,0x245,0x245)),a6(screen,'s',bO(0x267,0x20a,0x252,0x1d5,0x2e0)),a6(navigat
+
+Found 1 occurrences of 'canvas' (Canvas fingerprint)
+  Context 1: 8714','script\x20error','ch-status','innerWidth','canvas','ws_gpu_vendor','840HVLyCw','appVersion','zh-cn'
+
+Found 4 occurrences of 'performance' (Performance API)
+  Context 1: ,\x20please\x20wait...','123456','createElement','performance','symbol','alert','144CsiloG','PDF.PdfCtrl','请开启浏
+  Context 2: 0!==window[bL(-0x16a,-0x153,-0xf8,-0xe3,-0x1db)]&&performance[bL(-0xcc,-0x74,-0x11a,-0xf,-0x11f)]?(performance[
+  Context 3: &performance[bL(-0xcc,-0x74,-0x11a,-0xf,-0x11f)]?(performance[bL(-0x77,-0x74,-0xfa,-0xcf,-0x32)](),setTimeout(f
+  Context 4: e){return bL(d,e- -0xc7,c-0x13a,d-0x1d8,e-0x137);}performance[bM(-0xf9,-0x158,-0xc2,-0xd7,-0x13b)]();},0x0),0x1
+

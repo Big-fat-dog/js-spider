@@ -56,6 +56,7 @@ Keyword packs:
 - signer: `"sign"`, `"token"`, `"nonce"`, `"timestamp"`, `"trace"`, `"x-sign"`, `"beforeSend"`, `"ajaxSetup"`, `"requestId"`
 - crypto: `"md5"`, `"sha"`, `"hmac"`, `"aes"`, `"rsa"`, `"crypto.subtle"`
 - environment: `"navigator"`, `"canvas"`, `"webgl"`, `"performance"`, `"webdriver"`
+- probe chain: `"Object.keys"`, `"Reflect.ownKeys"`, `"getOwnPropertyDescriptor"`, `"toString"`, `"document.all"`, `"JSON.stringify"`
 
 ## Dynamic validation
 
@@ -86,8 +87,17 @@ Start with a clean baseline. Then use initiator stacks and request diffs. Add ru
 - `inject_before_load`: patch or observe a narrow environment branch before the page script runs
 - `save_script_source`: preserve suspicious bundles for offline diffing when environment mismatch remains unclear
 
+## Embedded runtime routing
+
+- If the target needs `navigator`, `screen`, `location`, DOM lifecycle, timers, `document.cookie`, or XHR wrapper semantics without true interaction, route to `references/embedded-browser-runtime-playbook.md`.
+- If the runtime exposes a synchronous getter after init or self-issues the decisive XHR or fetch payload, route to `references/challenge-artifact-harvest-playbook.md` before brute-force DOM patching.
+- Use a local embedded runtime such as `iv8` to run offline page bootstrap, advance logical time, observe API probe chains, or inspect local net-log style mutations.
+- Extract explicit artifacts back to Python: cookie string, final URL, wrapped body, token, or decoded payload.
+- Do not let the runtime own live HTTP or turn into a stealth browser dependency when a narrower local helper would do.
+
 ## Failure routing
 
+- H2 reset, TLS EOF, handshake timeout, or browser-pass and stdlib-fail before app semantics: suspect transport admission and route to `references/transport-pre-gate-playbook.md`
 - `403`, `412`, `429`: compare headers, cookies, sign freshness, and request pacing
 - business error with normal `200`: compare payload assembly order and timestamp precision
 - decrypt failure after a successful `200`: verify whether the runtime key/iv is transformed through a helper such as digit-pair-to-char before AES is applied
@@ -95,6 +105,7 @@ Start with a clean baseline. Then use initiator stacks and request diffs. Add ru
 - occasional success: inspect one-time tokens, session refresh, or concurrent request coupling
 - first request works but immediate replay fails: compare cookie mutation, in-memory timestamp slots, and whether a page refresh function must run before every request
 - response gibberish: search for decrypt path, compression, protobuf, or msgpack
+- local runtime timers fail after init but one getter or outgoing request boundary is visible: route to `references/challenge-artifact-harvest-playbook.md` before patching more DOM
 - hooked page fails but clean page works: suspect observer effect, remove invasive hooks, and recapture the baseline before deeper tracing
 
 ## Local helper scripts

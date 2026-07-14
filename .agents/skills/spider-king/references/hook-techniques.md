@@ -26,8 +26,13 @@ Use this file when runtime proof is faster than static reading.
 3. helper-level hooks
 4. local-variable breakpoints only if hooks still leave ambiguity
 
+Rule:
+
+- if instance-level hooks get replaced or skipped, move upward to the shared boundary that every call must cross such as the prototype, constructor wrapper, or transport egress
+
 ## Common traps
 
 - hooking business-layer functions while missing the transport wrapper
+- hooking one convenient object instance when the runtime keeps rebinding or cloning the real caller
 - pausing too early with breakpoints and drowning in noise
 - capturing only final hashes without the input string that produced them
