@@ -19,9 +19,9 @@ function pretty(value) {
         return JSON.stringify(value);
     }
     if (value instanceof Uint8Array || Array.isArray(value)) {
-        // 数组：显示前 20 个元素
-        let arr = Array.from(value).slice(0, 20);
-        let suffix = value.length > 20 ? '...(len=' + value.length + ')' : '';
+        // 数组：显示前 50 个元素
+        let arr = Array.from(value).slice(0, 50);
+        let suffix = value.length > 50 ? '...(len=' + value.length + ')' : '';
         return '[' + arr.map(x => typeof x === 'number' ? x : pretty(x)).join(', ') + suffix + ']';
     }
     if (typeof value === 'object') {

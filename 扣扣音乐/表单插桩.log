@@ -1,0 +1,63 @@
+qq表单:54 [1] 方法名:  ƒ c() {
+                        for (var l, f, h = [o, s, n, this, arguments, c, r, 0], d = void 0, p = t, g = []; ; )
+                            try {
+                                for (; ; )
+     … 调用对象:  undefined 参数无 结果： Window {window: Window, self: Window, document: document, name: '', location: Location, …}
+qq表单:54 [2] 方法名:  ƒ () { [native code] } 调用对象:  undefined 参数1： true 结果： undefined
+qq表单:54 [3] new对象—— 构造函数： ƒ Promise() { [native code] } 参数： ƒ c() {
+                        for (var l, f, h = [o, s, n, this, arguments, c, r, 0], d = void 0, p = t, g = []; ; )
+                            try {
+                                for (; ; )
+     … 结果: Promise {<fulfilled>: true}
+qq表单:54 [4] 方法名:  ƒ c() {
+                        for (var l, f, h = [o, s, n, this, arguments, c, r, 0], d = void 0, p = t, g = []; ; )
+                            try {
+                                for (; ; )
+     … 调用对象:  undefined 参数无 结果： Promise {<fulfilled>: true}
+qq表单:54 [5] 方法名:  ƒ then() { [native code] } 调用对象:  Promise {<fulfilled>: true} 参数： ƒ c() {
+                        for (var l, f, h = [o, s, n, this, arguments, c, r, 0], d = void 0, p = t, g = []; ; )
+                            try {
+                                for (; ; )
+     … 结果： Promise {<pending>}
+qq表单:54 [6] new对象—— 构造函数： ƒ Promise() { [native code] } 参数： ƒ c() {
+                        for (var l, f, h = [o, s, n, this, arguments, c, r, 0], d = void 0, p = t, g = []; ; )
+                            try {
+                                for (; ; )
+     … 结果: Promise {<pending>}
+qq表单:816 Promise {<pending>}
+qq表单:54 [7] 方法名:  /Headless/i 调用对象:  undefined 参数1： Headless 参数2： i 结果： /Headless/i
+qq表单:54 [8] 方法名:  ƒ test() { [native code] } 调用对象:  /Headless/i 参数1： Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36 Edg/149.0.0.0 结果： false
+qq表单:54 [9] 方法名:  ƒ indexOf() { [native code] } 调用对象:  y.qq.com 参数1： qq.com 结果： 2
+qq表单:54 [10] 方法名:  ƒ some() { [native code] } 调用对象:  (6) ['qq.com', 'joox.com', 'tencentmusic.com', 'wavecommittee.com', 'kugou.com', 'kuwo.cn'] 参数： ƒ c() {
+                        for (var l, f, h = [o, s, n, this, arguments, c, r, 0], d = void 0, p = t, g = []; ; )
+                            try {
+                                for (; ; )
+     … 结果： true
+qq表单:54 [11] new对象—— 构造函数： ƒ Uint8Array() { [native code] } 参数： (16) [189, 48, 95, 16, 208, 255, 116, 182, 239, 84, 218, 184, 53, 181, 225, 207] 结果: Uint8Array(16) [189, 48, 95, 16, 208, 255, 116, 182, 239, 84, 218, 184, 53, 181, 225, 207, buffer: ArrayBuffer(16), byteLength: 16, byteOffset: 0, length: 16, Symbol(Symbol.toStringTag): 'Uint8Array']
+qq表单:54 [12] new对象—— 构造函数： ƒ Uint8Array() { [native code] } 参数： 12 结果: Uint8Array(12) [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, buffer: ArrayBuffer(12), byteLength: 12, byteOffset: 0, length: 12, Symbol(Symbol.toStringTag): 'Uint8Array']
+qq表单:54 [13] 方法名:  ƒ getRandomValues() { [native code] } 调用对象:  Crypto {subtle: SubtleCrypto} 参数1： Uint8Array(12) [255, 123, 11, 78, 189, 248, 34, 26, 45, 183, 152, 92, buffer: ArrayBuffer(12), byteLength: 12, byteOffset: 0, length: 12, Symbol(Symbol.toStringTag): 'Uint8Array'] 结果： Uint8Array(12) [255, 123, 11, 78, 189, 248, 34, 26, 45, 183, 152, 92, buffer: ArrayBuffer(12), byteLength: 12, byteOffset: 0, length: 12, Symbol(Symbol.toStringTag): 'Uint8Array']
+qq表单:54 [14] 方法名:  ƒ importKey() { [native code] } 调用对象:  SubtleCrypto {} 参数： 1 结果： Promise {<fulfilled>: CryptoKey}
+qq表单:54 [15] 方法名:  ƒ then() { [native code] } 调用对象:  Promise {<fulfilled>: CryptoKey} 参数： ƒ c() {
+                        for (var l, f, h = [o, s, n, this, arguments, c, r, 0], d = void 0, p = t, g = []; ; )
+                            try {
+                                for (; ; )
+     … 结果： Promise {<pending>}
+qq表单:54 [16] 方法名:  ƒ then() { [native code] } 调用对象:  Promise {<pending>} 参数： ƒ c() {
+                        for (var l, f, h = [o, s, n, this, arguments, c, r, 0], d = void 0, p = t, g = []; ; )
+                            try {
+                                for (; ; )
+     … 结果： Promise {<pending>}
+qq表单:54 [17] new对象—— 构造函数： ƒ TextEncoder() { [native code] } 结果: TextEncoder {encoding: 'utf-8'}
+qq表单:54 [18] 方法名:  ƒ encode() { [native code] } 调用对象:  TextEncoder {encoding: 'utf-8'} 参数1： {"comm":{"cv":4747474,"ct":24,"format":"json","inCharset":"utf-8","outCharset":"utf-8","notice":0,"platform":"yqq.json","needNewCode":1,"uin":0,"g_tk_new_20200303":5381,"g_tk":5381},"req_1":{"module":"yqq.WhiteListServer","method":"Pass","param":{}},"req_2":{"module":"music.musicsearch.HotkeyService","method":"GetHotkeyForQQMusicMobile","param":{"searchid":"22879308046081988","remoteplace":"txt.yqq.top","from":"yqqweb"}},"req_3":{"module":"yqq.WhiteListServer","method":"Pass","param":{}},"req_4":{"module":"music.paycenterapi.LoginStateVerificationApi","method":"GetChargeAccount","param":{"appid":"mlive"}}} 结果： Uint8Array(613) [123, 34, 99, 111, 109, 109, 34, 58, 123, 34, 99, 118, 34, 58, 52, 55, 52, 55, 52, 55, 52, 44, 34, 99, 116, 34, 58, 50, 52, 44, 34, 102, 111, 114, 109, 97, 116, 34, 58, 34, 106, 115, 111, 110, 34, 44, 34, 105, 110, 67, 104, 97, 114, 115, 101, 116, 34, 58, 34, 117, 116, 102, 45, 56, 34, 44, 34, 111, 117, 116, 67, 104, 97, 114, 115, 101, 116, 34, 58, 34, 117, 116, 102, 45, 56, 34, 44, 34, 110, 111, 116, 105, 99, 101, 34, 58, 48, 44, 34, 112, …]
+qq表单:54 [19] 方法名:  ƒ encrypt() { [native code] } 调用对象:  SubtleCrypto {} 参数1： {name: 'AES-GCM', iv: Uint8Array(12)} 参数2： CryptoKey {type: 'secret', extractable: false, algorithm: {…}, usages: Array(1)} 参数3： Uint8Array(613) [123, 34, 99, 111, 109, 109, 34, 58, 123, 34, 99, 118, 34, 58, 52, 55, 52, 55, 52, 55, 52, 44, 34, 99, 116, 34, 58, 50, 52, 44, 34, 102, 111, 114, 109, 97, 116, 34, 58, 34, 106, 115, 111, 110, 34, 44, 34, 105, 110, 67, 104, 97, 114, 115, 101, 116, 34, 58, 34, 117, 116, 102, 45, 56, 34, 44, 34, 111, 117, 116, 67, 104, 97, 114, 115, 101, 116, 34, 58, 34, 117, 116, 102, 45, 56, 34, 44, 34, 110, 111, 116, 105, 99, 101, 34, 58, 48, 44, 34, 112, …] 结果： Promise {<fulfilled>: ArrayBuffer(629)}
+qq表单:54 [20] new对象—— 构造函数： ƒ Uint8Array() { [native code] } 参数： ArrayBuffer(629) 结果: Uint8Array(629) [147, 219, 6, 86, 150, 252, 171, 114, 175, 128, 203, 139, 19, 87, 241, 41, 47, 170, 49, 156, 87, 47, 187, 148, 7, 157, 150, 30, 75, 170, 20, 13, 222, 242, 186, 102, 142, 94, 25, 87, 22, 213, 235, 149, 173, 255, 50, 50, 210, 228, 196, 136, 94, 85, 137, 26, 133, 193, 59, 111, 96, 207, 35, 12, 2, 22, 252, 214, 234, 128, 132, 101, 138, 244, 63, 138, 90, 234, 31, 28, 50, 19, 255, 251, 106, 230, 245, 218, 233, 137, 53, 199, 234, 235, 167, 171, 78, 209, 41, 253, …]
+qq表单:54 [21] new对象—— 构造函数： ƒ Uint8Array() { [native code] } 参数： 641 结果: Uint8Array(641) [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …]
+qq表单:54 [22] 方法名:  ƒ () { [native code] } 调用对象:  Uint8Array(641) [255, 123, 11, 78, 189, 248, 34, 26, 45, 183, 152, 92, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …] 参数1： Uint8Array(12) [255, 123, 11, 78, 189, 248, 34, 26, 45, 183, 152, 92, buffer: ArrayBuffer(12), byteLength: 12, byteOffset: 0, length: 12, Symbol(Symbol.toStringTag): 'Uint8Array'] 结果： undefined
+qq表单:54 [23] 方法名:  ƒ () { [native code] } 调用对象:  Uint8Array(641) [255, 123, 11, 78, 189, 248, 34, 26, 45, 183, 152, 92, 147, 219, 6, 86, 150, 252, 171, 114, 175, 128, 203, 139, 19, 87, 241, 41, 47, 170, 49, 156, 87, 47, 187, 148, 7, 157, 150, 30, 75, 170, 20, 13, 222, 242, 186, 102, 142, 94, 25, 87, 22, 213, 235, 149, 173, 255, 50, 50, 210, 228, 196, 136, 94, 85, 137, 26, 133, 193, 59, 111, 96, 207, 35, 12, 2, 22, 252, 214, 234, 128, 132, 101, 138, 244, 63, 138, 90, 234, 31, 28, 50, 19, 255, 251, 106, 230, 245, 218, …] 参数1： Uint8Array(629) [147, 219, 6, 86, 150, 252, 171, 114, 175, 128, 203, 139, 19, 87, 241, 41, 47, 170, 49, 156, 87, 47, 187, 148, 7, 157, 150, 30, 75, 170, 20, 13, 222, 242, 186, 102, 142, 94, 25, 87, 22, 213, 235, 149, 173, 255, 50, 50, 210, 228, 196, 136, 94, 85, 137, 26, 133, 193, 59, 111, 96, 207, 35, 12, 2, 22, 252, 214, 234, 128, 132, 101, 138, 244, 63, 138, 90, 234, 31, 28, 50, 19, 255, 251, 106, 230, 245, 218, 233, 137, 53, 199, 234, 235, 167, 171, 78, 209, 41, 253, …] 参数2： 12 结果： undefined
+qq表单:54 [24] 方法名:  ƒ c() {
+                        for (var l, f, h = [o, s, n, this, arguments, c, r, 0], d = void 0, p = t, g = []; ; )
+                            try {
+                                for (; ; )
+     … 调用对象:  undefined 参数1： Uint8Array(641) [255, 123, 11, 78, 189, 248, 34, 26, 45, 183, 152, 92, 147, 219, 6, 86, 150, 252, 171, 114, 175, 128, 203, 139, 19, 87, 241, 41, 47, 170, 49, 156, 87, 47, 187, 148, 7, 157, 150, 30, 75, 170, 20, 13, 222, 242, 186, 102, 142, 94, 25, 87, 22, 213, 235, 149, 173, 255, 50, 50, 210, 228, 196, 136, 94, 85, 137, 26, 133, 193, 59, 111, 96, 207, 35, 12, 2, 22, 252, 214, 234, 128, 132, 101, 138, 244, 63, 138, 90, 234, 31, 28, 50, 19, 255, 251, 106, 230, 245, 218, …] 结果： /3sLTr34Ihott5hck9sGVpb8q3KvgMuLE1fxKS+qMZxXL7uUB52WHkuqFA3e8rpmjl4ZVxbV65Wt/zIy0uTEiF5ViRqFwTtvYM8jDAIW/NbqgIRlivQ/ilrqHxwyE//7aub12umJNcfq66erTtEp/VQ42ot6J1dIJ7tgFanxzGmic3Hu/5FOxAB/OH2jIVSNo6FzmD7w5i36KVRZRkiDCTyFU5DEYix2H0hoUrHW7vCeUmpyIkq1nuvlxafa80FR9MeMMFIWg5gYf6XlYFbZjwj4Agz+J+mbrkLdeioHf9w8BDH22c3cXN/vla0ucImCgiJE7doyYEo0c5wgR5Yl6bcsCOtyztHRTepj9K3cnAITRshZMtrfiM6AKgXvy7fmPPuU/PVOvgFVHDWZFsKyyzmOIWYHyhqtkpy4FgboKdduHtbIYhzGulHFLuTIjSExzdymt5X2n32weeXV/gbe/qzMl4AWHRv0XMK1Z7ifI/n5wn2Rt2jCF97g6S4+zC4Za/kpWxW9nwbrUdB2+hr2d5qa8lyu8vEGftXfqtlvincYz183QoPFfyvN429omcyZTL0kuXwKCXTq/DGbR7Rtb5+vhYRCnQqqST5L5H8Nd8c8ExWSHgv21qRPV3X98gGydoQX7pQtvGWYYYaluFHJdMx6iJn0gOJZIvb+T5v2NGDpXBrL3BfE/cqCELVS3cHWOHOxn9uaVS5wySKcbRcAsNAwGCCDmRrkj5+ZkKBIc+1jn/CloExJGySXsiLAVho2cVUMTK67paMwgu9iCDIAxHr+6PBm8kdjnHMy/zQJ+Qj4Ym/8MDyYWhoWLnlRn3XL4CjCgb+cW1yXcXn7zCCj14Y=
+qq表单:54 [25] 方法名:  ƒ () { [native code] } 调用对象:  undefined 参数1： /3sLTr34Ihott5hck9sGVpb8q3KvgMuLE1fxKS+qMZxXL7uUB52WHkuqFA3e8rpmjl4ZVxbV65Wt/zIy0uTEiF5ViRqFwTtvYM8jDAIW/NbqgIRlivQ/ilrqHxwyE//7aub12umJNcfq66erTtEp/VQ42ot6J1dIJ7tgFanxzGmic3Hu/5FOxAB/OH2jIVSNo6FzmD7w5i36KVRZRkiDCTyFU5DEYix2H0hoUrHW7vCeUmpyIkq1nuvlxafa80FR9MeMMFIWg5gYf6XlYFbZjwj4Agz+J+mbrkLdeioHf9w8BDH22c3cXN/vla0ucImCgiJE7doyYEo0c5wgR5Yl6bcsCOtyztHRTepj9K3cnAITRshZMtrfiM6AKgXvy7fmPPuU/PVOvgFVHDWZFsKyyzmOIWYHyhqtkpy4FgboKdduHtbIYhzGulHFLuTIjSExzdymt5X2n32weeXV/gbe/qzMl4AWHRv0XMK1Z7ifI/n5wn2Rt2jCF97g6S4+zC4Za/kpWxW9nwbrUdB2+hr2d5qa8lyu8vEGftXfqtlvincYz183QoPFfyvN429omcyZTL0kuXwKCXTq/DGbR7Rtb5+vhYRCnQqqST5L5H8Nd8c8ExWSHgv21qRPV3X98gGydoQX7pQtvGWYYYaluFHJdMx6iJn0gOJZIvb+T5v2NGDpXBrL3BfE/cqCELVS3cHWOHOxn9uaVS5wySKcbRcAsNAwGCCDmRrkj5+ZkKBIc+1jn/CloExJGySXsiLAVho2cVUMTK67paMwgu9iCDIAxHr+6PBm8kdjnHMy/zQJ+Qj4Ym/8MDyYWhoWLnlRn3XL4CjCgb+cW1yXcXn7zCCj14Y= 结果： undefined
+VM2088 qq表单:1 true

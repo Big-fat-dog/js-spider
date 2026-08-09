@@ -1,3 +1,5 @@
+import json
+import base64
 import requests
 from time import time
 import subprocess
@@ -9,6 +11,8 @@ print(execjs.get().name)  # 确保能正常运行
 with open('sign.js', 'r', encoding='utf-8') as f:
     sig = execjs.compile(f.read())
 mydata = {"comm":{"cv":4747474,"ct":24,"format":"json","inCharset":"utf-8","outCharset":"utf-8","notice":0,"platform":"yqq.json","needNewCode":1,"uin":0,"g_tk_new_20200303":5381,"g_tk":5381},"req_1":{"module":"music.globalComment.CommentRead","method":"GetNewCommentList","param":{"BizType":4,"BizId":"4","LastCommentSeqNo":"","PageSize":25,"PageNum":0,"FromCommentId":"","WithHot":1,"PicEnable":1,"LastTotal":0,"LastTotalVer":"0"}},"req_2":{"module":"music.globalComment.CommentRead","method":"GetHotCommentList","param":{"BizType":4,"BizId":"4","LastCommentSeqNo":"","PageSize":15,"PageNum":0,"HotType":2,"WithAirborne":1,"PicEnable":1}},"req_3":{"module":"music.globalComment.CommentAsset","method":"GetCmBgCard","param":{}}}
+adata = '{"comm":{"cv":4747474,"ct":24,"format":"json","inCharset":"utf-8","outCharset":"utf-8","notice":0,"platform":"yqq.json","needNewCode":1,"uin":0,"g_tk_new_20200303":5381,"g_tk":5381},"req_1":{"module":"music.musicsearch.HotkeyService","method":"GetHotkeyForQQMusicMobile","param":{"searchid":"31365759695277856","remoteplace":"txt.yqq.top","from":"yqqweb"}},"req_2":{"module":"music.paycenterapi.LoginStateVerificationApi","method":"GetChargeAccount","param":{"appid":"mlive"}},"req_3":{"module":"musicToplist.ToplistInfoServer","method":"GetAll","param":{}}}'
+
 headers = {
     "accept": "application/octet-stream",
     "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
@@ -58,5 +62,34 @@ data = sig.call("encryptSync",mydata)
 
 response = requests.post(url, headers=headers, cookies=cookies, params=params, data=data)
 
-print(response.text)
 print(response)
+
+# 调试：保存原始响应
+with open('raw_response.bin', 'wb') as f:
+    f.write(response.content)
+print(f"原始响应长度: {len(response.content)} 字节")
+print(f"原始响应前50字节: {response.content[:50].hex()}")
+
+KEY = bytes([122, 63, 140, 29, 94, 155, 47, 10, 108, 77, 126, 139, 31, 58, 92, 157, 14, 43, 111,74,129])
+
+
+def decrypt(cipher_bytes):
+    if isinstance(cipher_bytes, str):
+        cipher_bytes = cipher_bytes.encode('utf-8')
+    
+    plain_bytes = bytearray()
+    for i, byte in enumerate(cipher_bytes):
+        plain_bytes.append(byte ^ KEY[i % len(KEY)])
+
+    # 调试：保存解密结果
+    with open('decrypted_result.bin', 'wb') as f:
+        f.write(plain_bytes)
+    print(f"解密结果前50字节: {plain_bytes[:50].hex()}")
+    
+    try:
+        return plain_bytes.decode('utf-8')
+    except:
+        return plain_bytes.decode('latin-1')  # 失败时用latin-1查看
+
+
+print(decrypt(response.content))

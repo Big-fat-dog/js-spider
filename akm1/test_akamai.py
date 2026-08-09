@@ -22,7 +22,7 @@ def main():
     print(f"Status: {resp.status_code}")
     print(f"Cookies: {resp.cookies.get_dict()}")
     
-    with open("d:/大胖狗的学习/逆向/胖狗逆向集/akm/page1.html", "w", encoding="utf-8") as f:
+    with open("d:/大胖狗的学习/逆向/胖狗逆向集/akm1/page1.html", "w", encoding="utf-8") as f:
         f.write(resp.text)
 
     jsc_conf_match = re.search(r'window\._jsc_ch_conf=({.*?});', resp.text)
@@ -39,7 +39,7 @@ def main():
         print(f"Cookies: {resp2.cookies.get_dict()}")
         print(f"Body length: {len(resp2.text)}")
         
-        with open("d:/大胖狗的学习/逆向/胖狗逆向集/akm/challenge.js", "w", encoding="utf-8") as f:
+        with open("d:/大胖狗的学习/逆向/胖狗逆向集/akm1/challenge.js", "w", encoding="utf-8") as f:
             f.write(resp2.text)
             
         print("\nStep 3: Analyzing challenge JS...")
@@ -48,7 +48,7 @@ def main():
         print("No _jsc_ch_conf found in page")
 
 def analyze_challenge(js_content):
-    with open("d:/大胖狗的学习/逆向/胖狗逆向集/akm/challenge_analysis.txt", "w", encoding="utf-8") as f:
+    with open("d:/大胖狗的学习/逆向/胖狗逆向集/akm1/challenge_analysis.txt", "w", encoding="utf-8") as f:
         f.write("=== Akamai Challenge JS Analysis ===\n\n")
         
         patterns = [
